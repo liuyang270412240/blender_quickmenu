@@ -383,7 +383,7 @@ def register():
   files.register()
 
   bpy.types.Scene.quick_menu = bpy.props.PointerProperty(type=QuickMenuProperties)
-  register_hotkey()
+  # register_hotkey()
   register_asset_library() 
 
   # Add the default config if the list is empty
@@ -418,4 +418,4 @@ def unregister():
   files.unregister()
 
   del bpy.types.Scene.quick_menu
-  unregister_hotkey()
+  # unregister_hotkey()
