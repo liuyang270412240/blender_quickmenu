@@ -54,10 +54,11 @@ def draw_menu(self, items):
       icon = item['icon'] if 'icon' in item else 'NODETREE'
       if is_in_editmode():
         operator = layout.operator('geometry.execute_node_group', text=title, icon=icon)
-        operator.name = item['nodetool']
-        operator.asset_library_type = item['nodetool_library_type'] if 'nodetool_library_type' in item else 'CUSTOM'
-        operator.asset_library_identifier = item['nodetool_library_identifier'] if 'nodetool_library_identifier' in item else 'QuickMenuLibrary'
-        operator.relative_asset_identifier = 'nodetools.blend/NodeTree/' + item['nodetool']
+        if operator:
+          operator.name = item['nodetool']
+          operator.asset_library_type = item['nodetool_library_type'] if 'nodetool_library_type' in item else 'CUSTOM'
+          operator.asset_library_identifier = item['nodetool_library_identifier'] if 'nodetool_library_identifier' in item else 'QuickMenuLibrary'
+          operator.relative_asset_identifier = 'nodetools.blend/NodeTree/' + item['nodetool']
       else:
         layout.operator('qm.void_edit_mode_only', text=title, icon=icon)
     elif 'operator' in item:
